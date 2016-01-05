@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="cordova-plugin-audio-join" version="1.0.0">
+  <engines>
+    <engine name="cordova" version=">=3.0.0"/>
+  </engines>
+  <name>AudioEncode</name>
+  <description>Plugin for android to join multi amr to one amr.</description>
+  <keywords>android Audio Recording Amr file join</keywords>
+  <license>MIT</license>
+
+  <!-- JavaScript interface -->
+  <js-module src="www/AudioJoin.js" name="AudioJoin">
+    <clobbers target="window.AudioJoin"/>
+  </js-module>
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="AudioJoin">
+        <param name="android-package" value="com.yufeg.audio.AudioJoin"/>
+      </feature>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/*">
+      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+      <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    </config-file>
+    <source-file src="src/android/AudioJoin.java" target-dir="src/com/yufeg/audio"/>
+  </platform>
+</plugin>
